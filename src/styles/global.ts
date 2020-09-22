@@ -18,12 +18,12 @@ html {
 body {
   background: #312e38;
   color: #fff;
-  font-size: 1.6rem;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 body, input, textarea, button {
+  font-size: 1.6rem;
   font-family: ${fontStack};
 }
 
