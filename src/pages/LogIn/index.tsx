@@ -6,7 +6,7 @@ import logoImg from '../../assets/logo.svg';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 
-const SignIn: React.FC = () => {
+const LogIn: React.FC = () => {
   return (
     <Container>
       <Content>
@@ -33,4 +33,4 @@ const SignIn: React.FC = () => {
   );
 };
 
-export default SignIn;
+export default LogIn;
