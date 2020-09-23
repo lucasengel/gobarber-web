@@ -49,10 +49,6 @@ export const Content = styled.div`
     &:hover {
       color: ${shade(0.2, '#f4ede8')};
     }
-
-    svg {
-      margin-right: 16px;
-    }
   }
 `;
 

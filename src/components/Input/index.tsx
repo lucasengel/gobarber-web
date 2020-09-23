@@ -1,4 +1,4 @@
-import { StyledInput } from './styles';
+import { StyledInput, StyledError } from './styles';
 import React, {
   InputHTMLAttributes,
   useCallback,
@@ -8,6 +8,7 @@ import React, {
 } from 'react';
 import { IconBaseProps } from 'react-icons';
 import { useField } from '@unform/core';
+import { FiAlertCircle } from 'react-icons/fi';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   name: string;
@@ -40,7 +41,7 @@ const Input: React.FC<InputProps> = ({ name, icon: Icon, ...rest }) => {
   }, [fieldName, registerField]);
 
   return (
-    <StyledInput isFilled={isFilled} isFocused={isFocused}>
+    <StyledInput hasError={!!error} isFilled={isFilled} isFocused={isFocused}>
       {Icon && <Icon size="20" />}
       <input
         onFocus={handleInputFocus}
@@ -49,6 +50,11 @@ const Input: React.FC<InputProps> = ({ name, icon: Icon, ...rest }) => {
         defaultValue={defaultValue}
         {...rest}
       />
+      {error && (
+        <StyledError title={error}>
+          <FiAlertCircle size="20" />
+        </StyledError>
+      )}
     </StyledInput>
   );
 };
