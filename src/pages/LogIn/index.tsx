@@ -5,11 +5,12 @@ import { FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
 import * as Yup from 'yup';
 
-import { useAuth } from '../../hooks/AuthContext';
+import { useAuth } from '../../hooks/auth';
 import getValidationErrors from '../../utils/getValidationErrors';
 import logoImg from '../../assets/logo.svg';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
+import { useToast } from '../../hooks/toast';
 
 interface LoginFormData {
   email: string;
@@ -20,6 +21,7 @@ const LogIn: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
 
   const { logIn } = useAuth();
+  const { addToast } = useToast();
 
   const handleOnSubmit = useCallback(
     async (data: LoginFormData) => {
@@ -37,16 +39,25 @@ const LogIn: React.FC = () => {
           abortEarly: false,
         });
 
-        logIn({
+        await logIn({
           email: data.email,
           password: data.password,
         });
       } catch (error) {
-        const errors = getValidationErrors(error);
-        formRef.current?.setErrors(errors);
+        if (error instanceof Yup.ValidationError) {
+          const errors = getValidationErrors(error);
+
+          formRef.current?.setErrors(errors);
+        }
+
+        addToast({
+          title: 'Authentication error',
+          description: 'Check your user and password.',
+          type: 'error',
+        });
       }
     },
-    [logIn],
+    [logIn, addToast],
   );
 
   return (
