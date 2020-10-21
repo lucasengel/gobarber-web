@@ -36,7 +36,7 @@ const Toast: React.FC<ToastProps> = ({ toast, style }) => {
     <Container
       type={toast.type}
       style={style}
-      hasDescription={!!toast.description}
+      $hasDescription={!!toast.description}
       onMouseOver={handleMouseOver}
       onMouseLeave={handleMouseLeave}
     >
