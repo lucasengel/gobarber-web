@@ -1,7 +1,7 @@
 {
   "env": {
     "browser": true,
-    "es6": true,
+    "es2021": true,
     "jest": true
   },
   "extends": [
@@ -20,10 +20,15 @@
     "ecmaFeatures": {
       "jsx": true
     },
-    "ecmaVersion": 2018,
+    "ecmaVersion": 12,
     "sourceType": "module"
   },
-  "plugins": ["react", "react-hooks", "@typescript-eslint", "prettier"],
+  "plugins": [
+    "react",
+    "react-hooks",
+    "@typescript-eslint",
+    "prettier"
+  ],
   "rules": {
     "@typescript-eslint/explicit-function-return-type": [
       "error",
@@ -31,7 +36,9 @@
         "allowExpressions": true
       }
     ],
-    "@typescript-eslint/no-use-before-define": [1],
+    "@typescript-eslint/no-use-before-define": [
+      1
+    ],
     "camelcase": "off",
     "import/extensions": [
       "error",
@@ -42,11 +49,20 @@
       }
     ],
     "import/prefer-default-export": "off",
-    "no-use-before-define": [0],
+    "no-use-before-define": [
+      0
+    ],
     "prettier/prettier": "error",
     "react-hooks/exhaustive-deps": "warn",
     "react-hooks/rules-of-hooks": "error",
-    "react/jsx-filename-extension": [1, { "extensions": [".tsx"] }],
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [
+          ".tsx"
+        ]
+      }
+    ],
     "react/jsx-props-no-spreading": "off"
   },
   "settings": {
