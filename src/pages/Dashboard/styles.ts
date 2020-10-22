@@ -53,8 +53,13 @@ export const Profile = styled.div`
       color: #f4ede8;
     }
 
-    strong {
+    a {
       color: #ff9000;
+      text-decoration: none;
+
+      &:hover {
+        color: ${shade(0.2, '#ff9000')}
+      }
     }
   }
 `

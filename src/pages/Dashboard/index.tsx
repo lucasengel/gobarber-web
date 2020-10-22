@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import { isAfter, isBefore, isToday } from 'date-fns';
+import { isAfter, isToday } from 'date-fns';
 import { format } from 'date-fns/esm';
 import DayPicker, { DayModifiers } from 'react-day-picker';
 import 'react-day-picker/lib/style.css'
@@ -10,6 +10,7 @@ import { Container, Header, HeaderContent, NextAppointment, Profile, Schedule, C
 import logoImg from '../../assets/logo.svg'
 import { useAuth } from '../../hooks/auth';
 import api from '../../services/api';
+import { Link } from 'react-router-dom';
 
 interface MonthAvailabilityItem {
   day: number;
@@ -114,7 +115,12 @@ const Dashboard: React.FC = () => {
           <img src={logoImg} alt="GoBarber" />
           <Profile>
             <img src={user.avatar_url} alt={user.name} />
-            <div><span>Welcome,</span><strong>{user.name}</strong></div>
+            <div>
+              <span>Welcome,</span>
+              <Link to="/profile">
+                <strong>{user.name}</strong>
+              </Link>
+            </div>
           </Profile>
           <button type="button" onClick={logOut}>
             <FiPower />
@@ -136,7 +142,7 @@ const Dashboard: React.FC = () => {
             <div>
               <img src={nextAppointment.user.avatar_url} alt={nextAppointment.user.name} />
               <strong>{nextAppointment.user.name}</strong>
-              <span><FiClock /> {format(new Date(nextAppointment.date), 'hhmma')}</span>
+              <span><FiClock /> {format(new Date(nextAppointment.date), 'hh:mma')}</span>
             </div>
           </NextAppointment>}
 
