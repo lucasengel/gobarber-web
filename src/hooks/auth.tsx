@@ -37,7 +37,7 @@ export const AuthProvider: React.FC = ({ children }) => {
 
       return {
         token,
-        user: JSON.parse(user)
+        user: JSON.parse(user),
       };
     }
 
@@ -71,13 +71,13 @@ export const AuthProvider: React.FC = ({ children }) => {
     (user: User) => {
       setData({
         token: data.token,
-        user
-      })
+        user,
+      });
 
       localStorage.setItem('@GoBarber:user', JSON.stringify(user));
     },
     [setData, data.token],
-  )
+  );
 
   return (
     <AuthContext.Provider
@@ -85,7 +85,7 @@ export const AuthProvider: React.FC = ({ children }) => {
         user: data.user,
         logIn,
         logOut,
-        updateUser
+        updateUser,
       }}
     >
       {children}
@@ -95,8 +95,6 @@ export const AuthProvider: React.FC = ({ children }) => {
 
 export const useAuth = (): AuthContextData => {
   const context = useContext(AuthContext);
-
-  if (!context) throw new Error('useAuth must be used within an AuthProvider.');
 
   return context;
 };
