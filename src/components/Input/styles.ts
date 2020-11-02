@@ -1,13 +1,13 @@
 import styled, { css } from 'styled-components';
 import Tooltip from '../Tooltip';
 
-interface StyledInputProps {
+interface ContainerProps {
   isFocused: boolean;
   isFilled: boolean;
   hasError: boolean;
 }
 
-export const StyledInput = styled.div<StyledInputProps>`
+export const Container = styled.div<ContainerProps>`
   align-items: center;
   background: #232129;
   border-radius: 10px;
@@ -17,21 +17,21 @@ export const StyledInput = styled.div<StyledInputProps>`
   padding: 16px;
   width: 100%;
 
-  ${props =>
-    props.isFocused === true &&
+  ${({ isFocused }) =>
+    isFocused &&
     css`
       border-color: #ff9000;
       color: #ff9000;
     `}
 
-  ${props =>
-    props.isFilled === true &&
+  ${({ isFilled }) =>
+    isFilled &&
     css`
       color: #ff9000;
     `}
 
-  ${props =>
-    props.hasError === true &&
+  ${({ hasError }) =>
+    hasError &&
     css`
       border-color: #c53030;
     `}
